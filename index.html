@@ -194,6 +194,36 @@ var projection = d3.geo.albersUsa()
            .translate([width/2, height/2])    // translate to center of screen
            .scale(width);          // scale things down so see entire US
 
+
+// Define path generator
+var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
+         .projection(projection);  // tell path generator to use albersUsa projection
+
+    
+// Define linear scale for output
+var color = d3.scale.linear()
+        .range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)"]);
+
+var legendText = ["Logs", "States Traveled", "States Not Visited"];
+
+//Create SVG element and append map to the SVG
+var svg = d3.select("#map")
+      .append("svg")
+      .style('height', height + 'px')
+      .style('width', width + 'px');
+
+// Append Div for tooltip to SVG
+var div = d3.select("#map")
+        .append("div")   
+        .attr("class", "tooltip")               
+        .style("opacity", 0);
+
+var modal01 = new Modal (
+{
+  id: 'modal01',
+  header: 'Log 01',
+});
+
 d3.select(window).on('resize', resize);
 
 function resize() {
@@ -216,34 +246,6 @@ function resize() {
     map.select('.land').attr('d', path);
     map.selectAll('.state').attr('d', path);
 }
-// Define path generator
-var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
-         .projection(projection);  // tell path generator to use albersUsa projection
-
-    
-// Define linear scale for output
-var color = d3.scale.linear()
-        .range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)"]);
-
-var legendText = ["Logs", "States Traveled", "States Not Visited"];
-
-//Create SVG element and append map to the SVG
-var svg = d3.select("#map")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
-
-// Append Div for tooltip to SVG
-var div = d3.select("#map")
-        .append("div")   
-        .attr("class", "tooltip")               
-        .style("opacity", 0);
-
-var modal01 = new Modal (
-{
-  id: 'modal01',
-  header: 'Log 01',
-});
 
 
 function clicked(d) {
