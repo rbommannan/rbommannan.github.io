@@ -179,40 +179,16 @@ var Modal = function (options) {
 
     
 //Width and height of map
-var margin = {top: 10, left: 10, bottom: 10, right: 10}
-  , width = 1500
-  , width = width - margin.left - margin.right
-  , mapRatio = .5
-  , height = width * mapRatio
-  , centered;
+
+var width = 1060,
+	height = 500;
+
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
-           .translate([width/2, height/2])    // translate to center of screen
-           .scale(width);          // scale things down so see entire US
+	.scale(width)
+	.translate([width/2,height/2]);
 
-d3.select(window).on('resize', resize);
-
-function resize() {
-    // adjust things when the window size changes
-    width = parseInt(d3.select('#map').style('width'));
-    width = width - margin.left - margin.right;
-    height = width * mapRatio;
-
-    // update projection
-    projection
-        .translate([width / 2, height / 2])
-        .scale(width);
-
-    // resize the map container
-    map
-        .style('width', width + 'px')
-        .style('height', height + 'px');
-
-    // resize the map
-    map.select('.land').attr('d', path);
-    map.selectAll('.state').attr('d', path);
-}
 // Define path generator
 var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
          .projection(projection);  // tell path generator to use albersUsa projection
@@ -224,11 +200,12 @@ var color = d3.scale.linear()
 
 var legendText = ["Logs", "States Traveled", "States Not Visited"];
 
+
 //Create SVG element and append map to the SVG
-var svg = d3.select("body")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
+var svg = d3.select("#map").append('svg')
+	.attr("preserveAspectRatio","xMidYMid")
+	.attr("viewBox","0 0 " + width + " " + height);
+
 
 // Append Div for tooltip to SVG
 var div = d3.select("body")
