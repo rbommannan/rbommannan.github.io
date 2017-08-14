@@ -198,7 +198,7 @@ d3.select(window).on('resize', resize);
 
 function resize() {
     // adjust things when the window size changes
-    width = parseInt(d3.select('#map').style('width'));
+    width = parseInt(d3.select('map').style('width'));
     width = width - margin.left - margin.right;
     height = width * mapRatio;
 
