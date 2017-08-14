@@ -180,15 +180,16 @@ var Modal = function (options) {
     
 //Width and height of map
 
-var width = 1060,
-	height = 500,
+var width = 1080,
+	height = 560,
   centered;
 
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
-	.scale(width)
-	.translate([width/2,height/2]);
+	.translate([width/2,height/2])
+  .scale(1);
+
 
 // Define path generator
 var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
