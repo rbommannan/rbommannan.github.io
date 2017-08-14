@@ -238,13 +238,13 @@ function resize() {
         .scale(width);
 
     // resize the map container
-    map
+    svg
         .style('width', width + 'px')
         .style('height', height + 'px');
 
     // resize the map
-    map.select('.land').attr('d', path);
-    map.selectAll('.state').attr('d', path);
+    svg.select('.land').attr('d', path);
+    svg.selectAll('.state').attr('d', path);
 }
 
 
