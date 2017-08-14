@@ -183,7 +183,7 @@ var Modal = function (options) {
     
 //Width and height of map
 var margin = {top: 10, left: 10, bottom: 10, right: 10}
-  , width = width - margin.left - margin.right
+  , width = parseInt(d3.select('#map').style('width'))
   , width = width - margin.left - margin.right
   , mapRatio = .5
   , height = width * mapRatio
