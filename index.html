@@ -198,7 +198,7 @@ var Modal = function (options) {
 
     
 //Width and height of map
-var margin = {top: 20, left: 20, bottom: 20, right: 20}
+var margin = {top: 10, left: 20, bottom: 20, right: 20}
   , width = parseInt(d3.select('#map').style('width'))
   , width = width - margin.left - margin.right
   , mapRatio = .5
@@ -208,7 +208,7 @@ var margin = {top: 20, left: 20, bottom: 20, right: 20}
 
 if (height >= (parseInt(d3.select('#map').style('height')) - margin.bottom))
 {
-  height = (parseInt(d3.select('#map').style('height'))) - margin.bottom;
+  height = (parseInt(d3.select('#map').style('height'))) - margin.bottom - margin.top;
 }
 
 // D3 Projection
