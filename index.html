@@ -201,9 +201,9 @@ var margin = {top: 20, left: 20, bottom: 20, right: 20}
   , height = width * mapRatio
   , centered;
 
-if (height > (parseInt(d3.select('#map').style('height')) - margin.bottom))
+if (height > (parseInt(d3.select('#map').style('innerHeight')) - margin.bottom))
 {
-  height = parseInt(d3.select('#map').style('height')) - margin.bottom
+  height = parseInt(d3.select('#map').style('innerHeight')) - margin.bottom;
 }
 
 // D3 Projection
