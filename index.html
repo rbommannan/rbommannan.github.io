@@ -206,9 +206,9 @@ var margin = {top: 10, left: 20, bottom: 80, right: 20}
   , centered;
 
 
-if (height >= parseInt(d3.select('#body').style('height')) - margin.bottom)
+if (height >= parseInt(d3.select('body').style('height')) - margin.bottom)
 {
-  height = (parseInt(d3.select('#body').style('height'))) - margin.bottom - margin.top;
+  height = (parseInt(d3.select('body').style('height'))) - margin.bottom - margin.top;
 }
 
 
