@@ -62,7 +62,7 @@ body {
 
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">WebSiteName</a>
@@ -207,12 +207,12 @@ var margin = {top: 10, left: 20, bottom: 80, right: 20}
   , centered;
 
 
-if (height >= (parseInt(d3.select('#map').style('height')) - margin.bottom))
+if (height >= parseInt(d3.select('#map').style('height')) - margin.bottom)
 {
   height = (parseInt(d3.select('#map').style('height'))) - margin.bottom - margin.top;
 }
 
-document.getElementById("map").style.height = height;
+
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
