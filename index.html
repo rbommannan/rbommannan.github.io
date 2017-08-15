@@ -182,13 +182,17 @@ var Modal = function (options) {
 
     
 //Width and height of map
-var margin = {top: 20, left: 20, bottom: 80, right: 20}
+var margin = {top: 20, left: 20, bottom: 20, right: 20}
   , width = parseInt(d3.select('#map').style('width'))
   , width = width - margin.left - margin.right
   , mapRatio = .5
   , height = width * mapRatio
   , centered;
 
+if (height > (parseInt(d3.select('#map').style('height')) - margin.bottom))
+{
+  height = parseInt(d3.select('#map').style('height')) - margin.bottom
+}
 // D3 Projection
 var projection = d3.geo.albersUsa()
            .translate([width/2, height/2])    // translate to center of screen
